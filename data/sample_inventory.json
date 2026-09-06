@@ -1,0 +1,70 @@
+{
+  "organization_name": "Example Corporation",
+  "brand_names": [
+    "Example Corporation",
+    "Example"
+  ],
+  "brand_keywords": [
+    "example",
+    "corporation"
+  ],
+  "domains": [
+    {
+      "domain": "example.com",
+      "official_url": "https://example.com",
+      "ips": [
+        "93.184.216.34"
+      ],
+      "asns": [
+        "AS15133"
+      ],
+      "registrars": [
+        "Example Registrar"
+      ],
+      "nameservers": [
+        "ns1.example.com",
+        "ns2.example.com"
+      ],
+      "ssl_fingerprints": [
+        "example-fingerprint"
+      ],
+      "ssl_sans": [
+        "example.com",
+        "*.example.com"
+      ],
+      "brand_names": [
+        "Example Corporation"
+      ],
+      "brand_keywords": [
+        "example"
+      ]
+    },
+    {
+      "domain": "example.in",
+      "official_url": "https://example.in",
+      "ips": [
+        "203.0.113.10"
+      ],
+      "asns": [
+        "AS64500"
+      ],
+      "registrars": [
+        "Example Registrar"
+      ],
+      "nameservers": [
+        "ns1.example.in",
+        "ns2.example.in"
+      ],
+      "ssl_fingerprints": [],
+      "ssl_sans": [
+        "example.in"
+      ],
+      "brand_names": [
+        "Example Corporation"
+      ],
+      "brand_keywords": [
+        "example"
+      ]
+    }
+  ]
+}
