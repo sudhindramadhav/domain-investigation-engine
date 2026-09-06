@@ -1,0 +1,8 @@
+Flask
+python-dotenv
+requests
+dnspython
+beautifulsoup4
+rapidfuzz
+cryptography
+gunicorn
