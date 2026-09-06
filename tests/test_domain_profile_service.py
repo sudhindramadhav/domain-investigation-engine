@@ -47,12 +47,34 @@ def test_domain_profile_investigation():
         }
     )
 
+    service.ssl_service.investigate = Mock(
+        return_value={
+            "domain": "example.com",
+            "subject": {
+                "commonName": "*.example.com"
+            },
+            "issuer": {
+                "commonName": "Example CA"
+            },
+            "san": [
+                "*.example.com",
+                "example.com"
+            ],
+            "serial_number": "123456789",
+            "version": 3,
+            "valid_from": "Jan 1 00:00:00 2026 GMT",
+            "valid_to": "Jan 1 00:00:00 2027 GMT",
+            "fingerprint_sha256": "abc123"
+        }
+    )
+
     result = service.investigate("example.com")
 
     assert result["domain"] == "example.com"
 
     assert "infrastructure" in result
     assert "rdap" in result
+    assert "ssl" in result
 
     assert result["infrastructure"]["ips"] == [
         "93.184.216.34"
@@ -65,6 +87,18 @@ def test_domain_profile_investigation():
     assert result["rdap"]["registration_date"] == (
         "1995-08-14T04:00:00Z"
     )
+
+    assert result["ssl"]["subject"]["commonName"] == (
+        "*.example.com"
+    )
+
+    assert result["ssl"]["issuer"]["commonName"] == (
+        "Example CA"
+    )
+
+    assert "example.com" in result["ssl"]["san"]
+
+    assert result["ssl"]["fingerprint_sha256"] == "abc123"
 
 
 def test_domain_profile_services_called():
@@ -93,6 +127,20 @@ def test_domain_profile_services_called():
         }
     )
 
+    service.ssl_service.investigate = Mock(
+        return_value={
+            "domain": "example.com",
+            "subject": None,
+            "issuer": None,
+            "san": [],
+            "serial_number": None,
+            "version": None,
+            "valid_from": None,
+            "valid_to": None,
+            "fingerprint_sha256": None
+        }
+    )
+
     service.investigate("example.com")
 
     service.infrastructure_service.investigate.assert_called_once_with(
@@ -100,5 +148,9 @@ def test_domain_profile_services_called():
     )
 
     service.rdap_service.investigate.assert_called_once_with(
+        "example.com"
+    )
+
+    service.ssl_service.investigate.assert_called_once_with(
         "example.com"
     )
