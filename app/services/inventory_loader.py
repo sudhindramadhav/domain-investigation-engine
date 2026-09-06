@@ -61,6 +61,19 @@ class InventoryLoader:
 
             domains.append(
                 DomainInventory(
+                    passive_dns=domain_data.get(
+    "passive_dns",
+    []
+),
+
+registration_date=domain_data.get(
+    "registration_date"
+),
+
+ssl=domain_data.get(
+    "ssl",
+    {}
+),
                     domain=domain,
                     official_url=domain_data.get(
                         "official_url"

@@ -1,69 +1,49 @@
 {
-  "organization_name": "Example Corporation",
+  "organization_name": "Corcept",
   "brand_names": [
-    "Example Corporation",
-    "Example"
+    "Corcept"
   ],
   "brand_keywords": [
-    "example",
-    "corporation"
+    "corcept"
   ],
   "domains": [
     {
-      "domain": "example.com",
-      "official_url": "https://example.com",
+      "domain": "corcept.com",
+      "official_url": "https://corcept.com",
       "ips": [
-        "93.184.216.34"
+        "40.93.192.1",
+        "52.101.11.13"
+      ],
+      "passive_dns": [
+        "166.117.64.72",
+        "151.101.2.159",
+        "35.193.101.241",
+        "13.91.48.24",
+        "173.203.62.111"
       ],
       "asns": [
-        "AS15133"
+        "AS8075"
       ],
       "registrars": [
-        "Example Registrar"
+        "Network Solutions, LLC"
       ],
       "nameservers": [
-        "ns1.example.com",
-        "ns2.example.com"
+        "ns45.worldnic.com",
+        "ns46.worldnic.com"
       ],
-      "ssl_fingerprints": [
-        "example-fingerprint"
-      ],
-      "ssl_sans": [
-        "example.com",
-        "*.example.com"
-      ],
-      "brand_names": [
-        "Example Corporation"
-      ],
-      "brand_keywords": [
-        "example"
-      ]
-    },
-    {
-      "domain": "example.in",
-      "official_url": "https://example.in",
-      "ips": [
-        "203.0.113.10"
-      ],
-      "asns": [
-        "AS64500"
-      ],
-      "registrars": [
-        "Example Registrar"
-      ],
-      "nameservers": [
-        "ns1.example.in",
-        "ns2.example.in"
-      ],
+      "registration_date": "1999-05-13",
+      "ssl": {
+        "country": "US",
+        "organization": "Amazon",
+        "common_name": "Amazon RSA 2048 M04"
+      },
       "ssl_fingerprints": [],
-      "ssl_sans": [
-        "example.in"
-      ],
+      "ssl_sans": [],
       "brand_names": [
-        "Example Corporation"
+        "Corcept"
       ],
       "brand_keywords": [
-        "example"
+        "corcept"
       ]
     }
   ]

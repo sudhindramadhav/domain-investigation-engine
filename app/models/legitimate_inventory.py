@@ -8,13 +8,31 @@ class DomainInventory:
 
     official_url: Optional[str] = None
 
-    ips: List[str] = field(default_factory=list)
+    ips: List[str] = field(
+        default_factory=list
+    )
 
-    asns: List[str] = field(default_factory=list)
+    passive_dns: List[str] = field(
+        default_factory=list
+    )
 
-    registrars: List[str] = field(default_factory=list)
+    asns: List[str] = field(
+        default_factory=list
+    )
 
-    nameservers: List[str] = field(default_factory=list)
+    registrars: List[str] = field(
+        default_factory=list
+    )
+
+    nameservers: List[str] = field(
+        default_factory=list
+    )
+
+    registration_date: Optional[str] = None
+
+    ssl: Dict[str, Optional[str]] = field(
+        default_factory=dict
+    )
 
     ssl_fingerprints: List[str] = field(
         default_factory=list

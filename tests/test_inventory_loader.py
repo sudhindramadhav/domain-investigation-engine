@@ -115,3 +115,87 @@ def test_invalid_inventory():
         assert False
     except ValueError:
         assert True
+
+def test_corcept_inventory_fields(tmp_path):
+
+    import json
+
+    inventory = {
+        "organization_name": "Corcept",
+        "brand_names": [
+            "Corcept"
+        ],
+        "domains": [
+            {
+                "domain": "corcept.com",
+                "ips": [
+                    "40.93.192.1",
+                    "52.101.11.13"
+                ],
+                "passive_dns": [
+                    "166.117.64.72",
+                    "151.101.2.159",
+                    "35.193.101.241"
+                ],
+                "asns": [
+                    "AS8075"
+                ],
+                "registrars": [
+                    "Network Solutions, LLC"
+                ],
+                "nameservers": [
+                    "ns45.worldnic.com",
+                    "ns46.worldnic.com"
+                ],
+                "registration_date": "1999-05-13",
+                "ssl": {
+                    "country": "US",
+                    "organization": "Amazon",
+                    "common_name": "Amazon RSA 2048 M04"
+                }
+            }
+        ]
+    }
+
+    file_path = tmp_path / "corcept.json"
+
+    file_path.write_text(
+        json.dumps(inventory),
+        encoding="utf-8"
+    )
+
+    loader = InventoryLoader()
+
+    result = loader.load_json(file_path)
+
+    domain = result.domains[0]
+
+    assert domain.domain == "corcept.com"
+
+    assert len(domain.ips) == 2
+
+    assert len(domain.passive_dns) == 3
+
+    assert "AS8075" in domain.asns
+
+    assert (
+        "Network Solutions, LLC"
+        in domain.registrars
+    )
+
+    assert (
+        "ns45.worldnic.com"
+        in domain.nameservers
+    )
+
+    assert domain.registration_date == (
+        "1999-05-13"
+    )
+
+    assert domain.ssl["organization"] == (
+        "Amazon"
+    )
+
+    assert domain.ssl["common_name"] == (
+        "Amazon RSA 2048 M04"
+    )
